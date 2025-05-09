@@ -14,19 +14,6 @@ export async function POST(req: Request) {
   }
 }
 
-// export async function GET() {
-//   try {
-//     await connectDB();
-//     const products = await Product.find().sort({ createdAt: -1 });
-//     return NextResponse.json(products);
-//   } catch (error) {
-//     return NextResponse.json({ error: 'Error fetching products' }, { status: 500 });
-//   }
-// }
-// import { NextResponse } from 'next/server';
-// import { connectDB } from '@/lib/db'; // Ensure this file exports a function to connect to DB
-// import Product from '@/models/Product'; // Ensure this points to the correct Product model
-
 // API route to get all products
 export async function GET() {
   try {

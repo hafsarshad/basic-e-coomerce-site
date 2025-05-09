@@ -1,54 +1,39 @@
+// working good on checkout save data on db
+//  import mongoose from 'mongoose';
+// const OrderSchema = new mongoose.Schema({
+//   userId: { type: String, required: true },
+//   userName: { type: String },
+//   userEmail: { type: String },
+//   address: { type: String, required: true },
+//   phone: { type: String, required: true },
+//   items: { type: Array, required: true },
+//   createdAt: { type: Date, default: Date.now },
+// });
+
+// export default mongoose.models.Order || mongoose.model('Order', OrderSchema);
+// added when dashbored 
 import mongoose from 'mongoose';
 
-const ProductSchema = new mongoose.Schema({
-  productId: String,
+const ItemSchema = new mongoose.Schema({
+  _id: { type: mongoose.Schema.Types.ObjectId, required: true },
   title: String,
+  description: String,
   price: Number,
   color: String,
+  createdAt: String,
+  updatedAt: String,
   quantity: Number,
-});
+  userId: String,
+}, { _id: false }); // Prevent auto _id inside array
 
 const OrderSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  address: String,
-  products: [ProductSchema],
-  orderDate: { type: Date, default: Date.now },
+  userId: { type: String, required: true },
+  userName: { type: String },
+  userEmail: { type: String },
+  address: { type: String, required: true },
+  phone: { type: String, required: true },
+  items: { type: [ItemSchema], required: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 export default mongoose.models.Order || mongoose.model('Order', OrderSchema);
-// // after dashbored
-// // src/models/Order.ts
-// import mongoose, { Schema, Document } from 'mongoose';
-
-// interface OrderProduct {
-//   product: mongoose.Types.ObjectId;
-//   quantity: number;
-//   color: string;
-// }
-
-// interface Order extends Document {
-//   name: string;
-//   email: string;
-//   address: string;
-//   orderDate: Date;
-//   products: OrderProduct[];
-// }
-
-// const orderSchema = new Schema<Order>({
-//   name: { type: String, required: true },
-//   email: { type: String, required: true },
-//   address: { type: String, required: true },
-//   orderDate: { type: Date, default: Date.now },
-//   products: [
-//     {
-//       product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-//       quantity: { type: Number, required: true },
-//       color: { type: String, required: true }
-//     }
-//   ]
-// });
-
-// // Create or get the model
-// const Order = mongoose.models.Order || mongoose.model<Order>('Order', orderSchema);
-// export default Order;

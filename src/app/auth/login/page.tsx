@@ -27,6 +27,7 @@ export default function LoginPage() {
 
   return (
     <form className='w-lg space-y-4 mx-auto' onSubmit={handleSubmit}>
+      <h2>only for admin</h2>
       <input className='border py-1   w-full' name="email" placeholder="Email" type="email" required />
       <input className='border  w-full ' name="password" placeholder="Password" type="password" required autoComplete="current-password" />
       <button className='bg-cyan-700 ' type="submit">Login</button>

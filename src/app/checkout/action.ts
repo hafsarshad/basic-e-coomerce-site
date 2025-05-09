@@ -1,98 +1,40 @@
 'use server';
 
-import  connectDB  from '@/lib/db';
-import Order  from '@/models/Order';
+import connectDB from '@/lib/db';
+import Order from '@/models/Order';
+import {User} from '@/models/User';
+import { CartItem } from '@/types';
 
-type OrderData = {
-  name: string;
-  email: string;
+interface OrderData {
+  userId: string;
   address: string;
-  cart: {
-    _id: string;
-    title: string;
-    price: number;
-    color: string;
-  }[];
-};
+  phone: string;
+  items: CartItem[];
+}
 
+export async function submitOrder(data: OrderData) {
+  try {
+    await connectDB();
 
-export const submitOrder = async (data: {
-    name: string;
-    email: string;
-    address: string;
-    cart: any[];
-  }) => {
-    try {
-      await connectDB();
-  
-      console.log('SERVER - received cart:', data.cart);
-  
-      const newOrder = new Order({
-        name: data.name,
-        email: data.email,
-        address: data.address,
-        products: data.cart,
-        orderDate: new Date(),
-      });
-  
-      await newOrder.save();
-  
-      return { success: true };
-    } catch (err) {
-      console.error(err);
-      return { success: false, message: 'Failed to place order' };
-    }
-  };
-  // after cart dashbored isssue
-// 'use server';
+    const user = await User.findById(data.userId);
+    if (!user) throw new Error('User not found');
 
-// import connectDB from '@/lib/db';
-// import Order from '@/models/Order';
+    await Order.create({
+      userId: data.userId,
+      userName: user.name,
+      userEmail: user.email,
+      address: data.address,
+      phone: data.phone,
+      items: data.items,
+      createdAt: new Date(),
+    });
 
-// type OrderData = {
-//   name: string;
-//   email: string;
-//   address: string;
-//   cart: {
-//     _id: string;
-//     title: string;
-//     price: number;
-//     color: string;
-//   }[];
-// };
+    return { status: 'success' };
+  } catch (error) {
+    console.log('User found:', User);
 
-// export const submitOrder = async (data: {
-//   name: string;
-//   email: string;
-//   address: string;
-//   cart: any[];
-// }) => {
-//   try {
-//     await connectDB();
-    
-//     // Debugging: Check the data received
-//     console.log('SERVER - received data:', data);
+    console.error('Order error:', error);
+    return { status: 'error' };
+  }
+}
 
-//     // Prepare order object
-//     const newOrder = new Order({
-//       name: data.name,
-//       email: data.email,
-//       address: data.address,
-//       products: data.cart.map((item) => ({
-//         product: item._id,
-//         quantity: 1, // Assuming quantity is 1 for simplicity, adjust as needed
-//         color: item.color,
-//       })),
-//       orderDate: new Date(),
-//     });
-
-//     // Save order to database
-//     await newOrder.save();
-
-//     // Return success response
-//     return { success: true };
-//   } catch (err) {
-//     console.error('Error placing order:', err);
-//     return { success: false, message: 'Failed to place order' };
-//   }
-// };

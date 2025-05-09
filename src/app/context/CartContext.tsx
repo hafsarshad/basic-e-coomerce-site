@@ -1,13 +1,17 @@
 // src/context/CartContext.tsx
 'use client';
-import { createContext, useContext, useState, ReactNode } from 'react';
+
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Product } from '@/types';
 
-type CartItem = Product;
+type CartItem = Product & {
+  quantity: number;
+  userId: string;
+};
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: CartItem) => void;
+  addToCart: (product: Product) => void;
   clearCart: () => void;
 }
 
@@ -16,8 +20,37 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  const addToCart = (product: CartItem) => {
-    setCart(prev => [...prev, product]);
+  // Load cart from sessionStorage on first render
+  useEffect(() => {
+    const stored = sessionStorage.getItem('cart');
+    if (stored) {
+      setCart(JSON.parse(stored));
+    }
+  }, []);
+
+  // Save cart to sessionStorage whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const addToCart = (product: Product) => {
+    const userId = sessionStorage.getItem('userId');
+    if (!userId) {
+      alert('You must sign up first.');
+      return;
+    }
+
+    setCart(prev => {
+      const existing = prev.find(item => item._id === product._id && item.userId === userId);
+      if (existing) {
+        return prev.map(item =>
+          item._id === product._id && item.userId === userId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prev, { ...product, quantity: 1, userId }];
+    });
   };
 
   const clearCart = () => setCart([]);

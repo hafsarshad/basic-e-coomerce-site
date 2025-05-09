@@ -1,7 +1,4 @@
-
-
 'use server';
-
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { cookies } from 'next/headers';
@@ -10,17 +7,18 @@ import {User} from '@/models/User';
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
-// SIGNUP
-// export const registerUser = async (formData: {
-//   name: string;
-//   email: string;
-//   password: string;
-// }) => {
+// type RegisterResponse =
+//   | { status: 'error'; error: string }
+//   | { status: 'success'; message: string; token: string; redirect: string };
+
+// export const registerUser = async (
+//   formData: { name: string; email: string; password: string }
+// ): Promise<RegisterResponse> => {
 //   try {
 //     await connectDB();
 
 //     const existingUser = await User.findOne({ email: formData.email });
-//     if (existingUser) return { error: 'User already exists' };
+//     if (existingUser) return { status: 'error', error: 'User already exists' };
 
 //     const hashedPassword = await bcrypt.hash(formData.password, 10);
 //     const token = jwt.sign({ email: formData.email }, process.env.JWT_SECRET!, {
@@ -35,17 +33,29 @@ const JWT_SECRET = process.env.JWT_SECRET!;
 //     });
 
 //     await newUser.save();
-//     return { message: 'User registered', token ,
-//          redirect:  "/home"
+    
+//     return {
+//       status: 'success',
+//       message: 'User registered',
+//       token,
+//       redirect: '/home',
 //     };
+    
 //   } catch (err) {
 //     console.error('❌ registerUser error:', err);
-//     return { error: 'Server error' };
+//     return { status: 'error', error: 'Server error' };
 //   }
 // };
+// upward is before seesion storade regarding cart 
 type RegisterResponse =
   | { status: 'error'; error: string }
-  | { status: 'success'; message: string; token: string; redirect: string };
+  | {
+      status: 'success';
+      message: string;
+      token: string;
+      redirect: string;
+      user: { _id: string; email: string };
+    };
 
 export const registerUser = async (
   formData: { name: string; email: string; password: string }
@@ -69,18 +79,20 @@ export const registerUser = async (
     });
 
     await newUser.save();
+    
     return {
       status: 'success',
       message: 'User registered',
       token,
       redirect: '/home',
+      user: { _id: newUser._id.toString(), email: newUser.email },
     };
+    
   } catch (err) {
     console.error('❌ registerUser error:', err);
     return { status: 'error', error: 'Server error' };
   }
 };
-
 
 
 
