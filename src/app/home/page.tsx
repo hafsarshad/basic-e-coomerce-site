@@ -1,4 +1,4 @@
-
+//home>page.tsx
 // after cart  
 'use client';
 import React, { useEffect, useState } from 'react';
