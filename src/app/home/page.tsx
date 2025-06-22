@@ -33,7 +33,7 @@ export default function HomePage() {
     router.push('/checkout'); // only if signed in
   };
   return (
-    <div className="p-4">
+    <div className="p-4 bg-red-300">
       <div className="text-right mb-4">
   
         <Link href="/auth/login" className="bg-blue-500 text-white py-2 px-4 rounded mx-2">Login</Link>
