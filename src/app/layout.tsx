@@ -25,9 +25,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="bg-gray-100 text-gray-900 antialiased">
-      <nav>
-        <div className="flex items-center justify-between p-4 bg-gray-800 text-white">
-          <h1 className="text-xl font-bold">Basic e-commerce site</h1>
+      <nav className='bg-yellow-200'>
+        <div className="flex items-center justify-between p-4  text-white">
+          <h1 className="text-xl font-bold">electroS </h1>
           
         </div>
       </nav>
