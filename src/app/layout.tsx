@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="bg-gray-100 text-gray-900 antialiased">
-      <nav className='bg-yellow-200'>
-        <div className="flex items-center justify-between p-4  text-white">
-          <h1 className="text-xl font-bold">electroS </h1>
+      <body className="bg-lightgray  ">
+      <nav className=''>
+        <div className="flex items-center justify-between p-4 ">
+          <h1 className="text-3xl font-instrument ">electro</h1>
           
         </div>
       </nav>
