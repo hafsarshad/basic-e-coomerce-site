@@ -4,16 +4,16 @@ import { ReactNode } from 'react';
 import { CartProvider } from './context/CartContext';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-// Font setup
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+// // Font setup
+// const geistSans = Geist({
+//   variable: '--font-geist-sans',
+//   subsets: ['latin'],
+// });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+// const geistMono = Geist_Mono({
+//   variable: '--font-geist-mono',
+//   subsets: ['latin'],
+// });
 
 // Metadata
 export const metadata: Metadata = {
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" >
       <body className="bg-lightgray  ">
       <nav className=''>
         <div className="flex items-center justify-between p-4 ">
-          <h1 className="text-3xl font-instrument ">electro</h1>
+          <h1 className="text-3xl font-instrument  ">electro</h1>
           
         </div>
       </nav>

@@ -40,6 +40,10 @@ export default function HomePage() {
         <Link href="/auth/signup" className="bg-blue-500 text-white py-2 px-4 rounded">Sign Up</Link>
       </div>
 
+    <div className="bg-lightgray text-black font-instrument p-6 text-xl">
+      Tailwind v4 is fully working!
+    </div>
+
       <h2 className="text-xl font-bold mb-4">Products</h2>
       <ul className="w-full  flex ">
         {products.map(product => (
