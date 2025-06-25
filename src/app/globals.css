@@ -23,6 +23,7 @@ body {
  @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
 
+/* You can add custom variables or styles below */
 :root {
   --background: #ffffff;
   --foreground: #000000;
