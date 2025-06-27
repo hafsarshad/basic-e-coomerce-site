@@ -18,6 +18,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <h1 className="text-3xl font-instrument  ">electro</h1>
           
         </div>
+        <div className="">
+          
+          <h1>sign in</h1>
+          <h1>view cart</h1>
+          <h1>profile</h1>
+        </div>
       </nav>
       <CartProvider>
           {children}
