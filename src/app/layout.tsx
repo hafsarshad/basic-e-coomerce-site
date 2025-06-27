@@ -4,18 +4,6 @@ import { ReactNode } from 'react';
 import { CartProvider } from './context/CartContext';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-// // Font setup
-// const geistSans = Geist({
-//   variable: '--font-geist-sans',
-//   subsets: ['latin'],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: '--font-geist-mono',
-//   subsets: ['latin'],
-// });
-
-// Metadata
 export const metadata: Metadata = {
   title: 'Next.js App',
   description: 'With TypeScript, Tailwind, Dynamic Routes, and DB',
