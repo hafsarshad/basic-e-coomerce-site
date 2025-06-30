@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           
         </div>
         <div className="">
-          
+          <h1>search</h1>
           <h1>sign in</h1>
           <h1>view cart</h1>
           <h1>profile</h1>
