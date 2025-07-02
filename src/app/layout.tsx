@@ -25,6 +25,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <h1>profile</h1>
         </div>
       </nav>
+      <div>
+        What is “Token-Based Deduction Logic”?
+         It is the business logic that determines when and how many tokens are deducted for a particular action.
+      </div>
       <CartProvider>
           {children}
         </CartProvider>
