@@ -20,17 +20,11 @@ body {
     color: white;
   }
 } */ 
- @import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* You can add custom variables or styles below */
-:root {
-  --background: #ffffff;
-  --foreground: #000000;
-}
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: sans-serif;
+  background-color: blueviolet;
 }

@@ -6,15 +6,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        lightgray: '#F3F3F4',
-      },
-      fontFamily: {
-        instrument: ['"Instrument Sans"', 'sans-serif'],
-      },
-    },
+    }
   },
   plugins: [],
 }
-
-  
