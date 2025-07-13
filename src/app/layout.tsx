@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" >
-      <body className="bg-lightgray  ">
+      <body className=" ">
       <nav className=''>
         <div className="flex items-center justify-between p-4 ">
-          <h1 className="text-3xl font-instrument  ">electro</h1>
+          <h1 className="text-3xl font-instrument  bg-lightgray ">electro</h1>
           
         </div>
         <div className="">
