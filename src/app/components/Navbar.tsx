@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Logo from '../assets/logo.svg';
+import Logo from '../../assests/logo.svg'; 
 
 export default function Navbar() {
     return(
