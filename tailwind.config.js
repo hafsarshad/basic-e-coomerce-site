@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         lightgray: '#f3f4f6', // add your desired color here
       },
+      
     },
   },
   plugins: [],

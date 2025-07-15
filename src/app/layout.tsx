@@ -1,4 +1,5 @@
 import './globals.css';
+import  Navbar from './components/Navbar'; // ✅ correct
 import { type Metadata } from 'next';
 import { ReactNode } from 'react';
 import { CartProvider } from './context/CartContext';
@@ -13,22 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" >
       <body className=" ">
-      <nav className=''>
-        <div className="flex items-center justify-between p-4 ">
-          <h1 className="text-3xl font-instrument  bg-lightgray ">electro</h1>
-          
-        </div>
-        <div className="">
-          <h1>search</h1>
-          <h1>sign in</h1>
-          <h1>view cart</h1>
-          <h1>profile</h1>
-        </div>
-      </nav>
-      <div>
-        What is “Token-Based Deduction Logic”?
-         It is the business logic that determines when and how many tokens are deducted for a particular action.
-      </div>
+       <Navbar/>
       <CartProvider>
           {children}
         </CartProvider>
