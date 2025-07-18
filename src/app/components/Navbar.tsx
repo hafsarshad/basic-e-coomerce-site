@@ -5,6 +5,7 @@ import Logo from '../../assests/logo.svg';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa' 
 
 export default function Navbar() {
+
     return(
  <nav>
   <div className="">
@@ -27,7 +28,7 @@ export default function Navbar() {
      <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
         <input type="text" placeholder="Search..." className="px-4 py-2 outline-none w-64"/>
         <button className="px-3 text-gray-600 bg-gray-100 hover:bg-gray-200">
-          <FaSearch />
+     
         </button>
       </div>
 
