@@ -62,7 +62,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { registerUser } from '../action';
-
+import Logo from '../../../assests/logo.svg';
 export default function SignupPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [message, setMessage] = useState('');
@@ -90,40 +90,23 @@ export default function SignupPage() {
   };
 
   return (
-    <form className="space-y-4 p-6 max-w-sm mx-auto" onSubmit={handleSubmit}>
+
+      <div className=  ''>
+         <Logo className=" w-auto" />
+          <form className="space-y-4 p-6 max-w-sm mx-auto border " onSubmit={handleSubmit}>
+             <Logo className="" />
+             <h1>Sign In</h1>
       {message && <p className="text-center text-sm text-red-500">{message}</p>}
 
-      <input
-        className="border p-2 w-full"
-        type="text"
-        placeholder="Name"
-        value={form.name}
-        onChange={e => setForm({ ...form, name: e.target.value })}
-        required
-      />
-
-      <input
-        className="border p-2 w-full"
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={e => setForm({ ...form, email: e.target.value })}
-        required
-      />
-
-      <input
-        className="border p-2 w-full"
-        type="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={e => setForm({ ...form, password: e.target.value })}
-        required
-      />
-
+  <input className="border p-2 w-full" type="text" placeholder="Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required />
+  <input className="border p-2 w-full" type="email" placeholder="Email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
+  <input className="border p-2 w-full" type="password" placeholder="Password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} required />
       <button className="border p-2 bg-blue-500 text-white w-full" type="submit">
         Sign Up
       </button>
     </form>
+      </div>
+  
   );
 }
 
