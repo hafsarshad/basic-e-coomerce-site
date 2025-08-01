@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { registerUser } from '../action';
 import Logo from '../../../assests/logo.svg';
-import backgroundImage from '../../../assests/bg.png'
+import backgroundImage from '../../../assests/bgYellow.png'
 export default function SignupPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [message, setMessage] = useState('');
@@ -36,7 +36,7 @@ export default function SignupPage() {
   <div className="relative min-h-screen flex items-center justify-center">
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-contain bg-center z-0"
+        className="absolute inset-0 bg-cover bg-center z-0"
         style={{
           backgroundImage: `url(${backgroundImage.src})`,
         }}
