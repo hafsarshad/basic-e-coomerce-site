@@ -42,44 +42,19 @@ export default function SignupPage() {
         }}
       />
       {/* Content */}
-      <form
-        onSubmit={handleSubmit}
-        className="relative z-20 space-y-4 p-6 max-w-sm w-full bg-white bg-opacity-80 backdrop-blur-lg rounded-lg shadow-lg"
-      >
-        <Logo className="mx-auto w-24" />
-        <h1 className="text-center text-xl font-bold">Sign Up</h1>
+     <form onSubmit={handleSubmit} className="relative z-20 space-y-4 p-6 max-w-sm w-full rounded-lg shadow-lg bg-yellow-500/5 backdrop-blur-md border border-white/30">
+  <Logo className="mx-auto w-24" />
+  <h1 className="text-center text-xl font-bold text-white">Sign Up</h1>
 
-        {message && <p className="text-center text-sm text-red-500">{message}</p>}
+  {message && <p className="text-center text-sm text-red-400">{message}</p>}
 
-        <input
-          className="border p-2 w-full rounded"
-          type="text"
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-          required
-        />
-        <input
-          className="border p-2 w-full rounded"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          required
-        />
-        <input
-          className="border p-2 w-full rounded"
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-          required
-        />
+  <input type="text" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+  <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+  <input type="password" placeholder="Password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
 
-        <button className="p-2 bg-blue-500 text-white w-full rounded hover:bg-blue-600 transition" type="submit">
-          Sign Up
-        </button>
-      </form>
+  <button type="submit" className="w-full p-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition">Sign Up</button>
+</form>
+
     </div>
   );
 }
