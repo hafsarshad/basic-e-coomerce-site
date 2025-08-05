@@ -42,7 +42,7 @@ export default function SignupPage() {
         }}
       />
       {/* Content */}
-     <form onSubmit={handleSubmit} className="relative z-20 space-y-4 p-6 max-w-sm w-full rounded-lg shadow-lg bg-[#F9F9F9]/20 backdrop-blur-md border border-white/30">
+     <form onSubmit={handleSubmit} className="relative z-20 space-y-4 p-6 max-w-sm w-full rounded-lg shadow-lg bg-[#FED700]/20 backdrop-blur-md border border-white/30">
   <Logo className="mx-auto w-24" />
   <h1 className="text-center text-xl font-bold text-white">Sign Up</h1>
 
