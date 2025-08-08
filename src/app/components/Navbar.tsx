@@ -6,7 +6,7 @@ import Logo from '../../assests/logo.svg'; // adjust path as needed
 
 export default function Navbar() {
   return (
-    <nav className="w-full px-4 py-3 shadow-md bg-white">
+    <nav className="w-full px-4 py-3 shadow-md bg-lightgray">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
         
         {/* Logo */}

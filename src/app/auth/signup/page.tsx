@@ -1,11 +1,12 @@
 
 'use client';
-
+import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { registerUser } from '../action';
-import Logo from '../../../assests/logo.svg';
+import Logo from '../../../assests/logoPng.png';
 import backgroundImage from '../../../assests/bgYellow.png'
+
 export default function SignupPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [message, setMessage] = useState('');
@@ -13,9 +14,7 @@ export default function SignupPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const res = await registerUser(form);
-
     if (res.status === 'error') {
       setMessage(res.error);
     } else {
@@ -33,29 +32,24 @@ export default function SignupPage() {
   };
 
   return (
-  <div className="relative min-h-screen flex items-center justify-center">
+<div className="relative min-h-screen flex items-center justify-center">
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{
-          backgroundImage: `url(${backgroundImage.src})`,
-        }}
-      />
+    <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: `url(${backgroundImage.src})`,}} />
       {/* Content */}
-     <form onSubmit={handleSubmit} className="relative z-20 space-y-4 p-6 max-w-sm w-full rounded-lg shadow-lg bg-[#FED700]/20 backdrop-blur-md border border-white/30">
-  <Logo className="mx-auto w-24" />
-  <h1 className="text-center text-xl font-bold text-white">Sign Up</h1>
+  <form onSubmit={handleSubmit} className="relative z-20 space-y-4 p-6 max-w-sm w-full rounded-lg shadow-lg bg-[#f3f4f6]/20 backdrop-blur-md border border-white/30">
+    {/* Logo */}
+    <div className=" w-36 mx-auto relative bg-slate-200"><Image src={Logo} alt="Logo" className="object-contain" /></div>
+     {/* heading */}
+     <h1 className="text-center text-xl font-bold text-blue-800">Sign Up</h1>
+      {message && <p className="text-center text-sm text-red-400">{message}</p>}
 
-  {message && <p className="text-center text-sm text-red-400">{message}</p>}
+     <input type="text" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+     <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+     <input type="password" placeholder="Password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
 
-  <input type="text" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
-  <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
-  <input type="password" placeholder="Password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
-
-  <button type="submit" className="w-full p-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition">Sign Up</button>
-</form>
-
-    </div>
+     <button type="submit" className="w-full p-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition">Sign Up</button>
+  </form>
+</div>
   );
 }
 
