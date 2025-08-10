@@ -43,7 +43,7 @@ export default function HomePage() {
       <h2 className="text-xl font-bold mb-4">Products</h2>
       <ul className="w-full  flex ">
         {products.map(product => (
-          <li key={product._id} className="border p-4 mx-2 w-1/3 rounded">
+          <li key={product._id} className="border p-4 mx-2 w-1/3">
             <h3 className="font-semibold">{product.title}</h3>
             <p>{product.description}</p>
             <p><strong>Price:</strong> ${product.price}</p>

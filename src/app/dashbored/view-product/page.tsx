@@ -25,7 +25,7 @@ export default async function ViewProductsPage() {
       <h2 className="text-xl font-bold mb-4">All Products</h2>
       <ul className="space-y-4">
         {products.map(product => (
-          <li key={product._id} className="border p-4 rounded">
+          <li key={product._id} className="border p-4 ">
             <h3 className="font-semibold">{product.title}</h3>
             <p>{product.description}</p>
             {product.color && <p><strong>Color:</strong> {product.color}</p>}
