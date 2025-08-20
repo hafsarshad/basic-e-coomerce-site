@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
-import Logo from '../../assests/logo.svg'; // adjust path as needed
+import Logo from '../../assests/logo.png'; // adjust path as needed
 
 export default function Navbar() {
   return (
@@ -11,7 +12,9 @@ export default function Navbar() {
         
         {/* Logo */}
       <div className="h-12 flex items-center">
-  <Logo className="h-full w-auto" />
+      <div className="">
+       <Image src={Logo} alt='' />
+      </div>
 </div>
 
 
