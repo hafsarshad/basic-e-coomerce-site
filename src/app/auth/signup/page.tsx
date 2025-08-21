@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { registerUser } from '../action';
-import Logo from '../../../assests/logoPng.png';
-import backgroundImage from '../../../assests/login.svg'
+import Logo from '../../../assests/logo.png';
+import backgroundImage from '../../../assests/login.png'
 
 export default function SignupPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
@@ -34,20 +34,20 @@ export default function SignupPage() {
   return (
 <div className="relative min-h-screen flex items-center justify-center">
       {/* Background image */}
-    <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: `url(${backgroundImage.src})`,}} />
-      {/* Content */}
-  <form onSubmit={handleSubmit} className="relative z-20 space-y-4 p-6 max-w-sm w-full rounded-lg shadow-lg bg-[#f3f4f6]/20 backdrop-blur-md border border-white/30">
+    <div className="absolute inset-0 bg-cover bg-center " style={{ backgroundImage: `url(${backgroundImage.src})`,}} />
+      {/*form*/}
+  <form onSubmit={handleSubmit} className="relative z-20 space-y-4 p-4 max-w-xs 2xl:max-w-2xl  w-full rounded-lg shadow-lg bg-[#f3f4f6]/20 backdrop-blur-md border border-white/30">
     {/* Logo */}
-    <div className=" w-36 mx-auto relative bg-slate-200"><Image src={Logo} alt="Logo" className="object-contain" /></div>
+    <div className=" w-36 mx-auto relative  -mt-4 "><Image src={Logo} alt="Logo" className="object-contain" /></div>
      {/* heading */}
-     <h1 className="text-center text-xl font-bold text-blue-800">Sign Up</h1>
+     <h1 className="text-center text-xl font-bold text-logoblack ">Sign Up</h1>
       {message && <p className="text-center text-sm text-red-400">{message}</p>}
 
-     <input type="text" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
-     <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
-     <input type="password" placeholder="Password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+     <input type="text" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-[rgb(255,217,18)]/5 text-gray-500 placeholder-gray-500 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-requiredgreen" />
+     <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-[rgb(255,217,18)]/5 text-gray-500 placeholder-gray-500 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-requiredgreen" />
+     <input type="password" placeholder="Password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required className="w-full p-2 rounded border border-white/30 bg-[rgb(255,217,18)]/5 text-gray-500 placeholder-gray-500 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-requiredgreen" />
 
-     <button type="submit" className="w-full p-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition">Sign Up</button>
+     <button type="submit" className="w-full p-2 rounded bg-requiredgreen  text-white hover:bg-hovergreen transition">SignUp</button>
   </form>
 </div>
   );
