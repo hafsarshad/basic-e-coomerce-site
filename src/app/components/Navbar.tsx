@@ -12,11 +12,8 @@ export default function Navbar() {
         
         {/* Logo */}
       <div className="h-12 flex items-center">
-      <div className="">
        <Image src={Logo} alt='' />
       </div>
-</div>
-
 
         {/* Search Bar */}
         <div className="flex items-center border border-gray-300 rounded-md overflow-hidden w-full max-w-md">

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { registerUser } from '../action';
 import Logo from '../../../assests/logoPng.png';
-import backgroundImage from '../../../assests/bgYellow.png'
+import backgroundImage from '../../../assests/login.svg'
 
 export default function SignupPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
