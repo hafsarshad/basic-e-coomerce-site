@@ -4,7 +4,7 @@ import './globals.css';
 import  Navbar from './components/Navbar'; // ✅ correct
 import { type Metadata } from 'next';
 import { ReactNode } from 'react';
-import { CartProvider } from './context/CartContext';
+import { CartProvider } from './(with-navbar)/context/CartContext';
 import { Geist, Geist_Mono } from 'next/font/google';
 //import { usePathname } from 'next/navigation';
 
@@ -20,10 +20,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" >
       <body className=" ">
-       <Navbar />
-      <CartProvider>
+     
+    
           {children}
-        </CartProvider>
+     
       </body>
     </html>
   );

@@ -33,7 +33,7 @@ export default function HomePage() {
     router.push('/checkout'); // only if signed in
   };
   return (
-    <div className="p-4 ">
+    <div className="p-20 ">
       
 
     <div className="bg-lightgray text-black font-instrument p-6 text-xl">
