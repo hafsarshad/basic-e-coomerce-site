@@ -26,6 +26,7 @@ interface Product extends Document {
   description: string;
   price: number;
   color: string;
+  image: string;
 }
 
 const ProductSchema: Schema<Product> = new Schema({
@@ -33,6 +34,7 @@ const ProductSchema: Schema<Product> = new Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   color: { type: String, required: true },
+  image: { type: String, required: true },
 });
 
 const Product = mongoose.models.Product || mongoose.model<Product>('Product', ProductSchema);
