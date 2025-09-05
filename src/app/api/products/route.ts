@@ -1,57 +1,40 @@
-//app>api>products>route.ts
-
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/db';
 import Product from '@/models/Product';
 import cloudinary from '@/lib/cloudinary';
-import { IncomingForm } from 'formidable';
-import fs from 'fs';
-import { promisify } from 'util';
-
-// Enable parsing of form-data with files
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-const readFile = promisify(fs.readFile);
 
 export async function POST(req: Request) {
   try {
-    // Parse form data
-    const form = new IncomingForm({ keepExtensions: true });
-
-    const data = await new Promise((resolve, reject) => {
-      form.parse(req as any, (err, fields, files) => {
-        if (err) return reject(err);
-        resolve({ fields, files });
-      });
-    });
-
-    const { fields, files } = data as any;
-
-    // Connect to DB
     await connectDB();
 
-    // Read and upload image to Cloudinary
-    const file = files.image[0];
-    const imageData = await readFile(file.filepath);
-    const base64Image = Buffer.from(imageData).toString('base64');
+    const formData = await req.formData();
+
+    const title = formData.get('title') as string;
+    const description = formData.get('description') as string;
+    const color = formData.get('color') as string;
+    const price = formData.get('price') as string;
+    const image = formData.get('image') as File;
+
+    if (!image || typeof image === 'string') {
+      return NextResponse.json({ error: 'Invalid image file' }, { status: 400 });
+    }
+
+    const arrayBuffer = await image.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
     const uploadRes = await cloudinary.uploader.upload(
-      `data:${file.mimetype};base64,${base64Image}`
+      `data:${image.type};base64,${buffer.toString('base64')}`
     );
 
-    // Save product with image URL
-    await Product.create({
-      title: fields.title[0],
-      description: fields.description[0],
-      color: fields.color[0],
-      price: fields.price[0],
-      image: uploadRes.secure_url, // store image URL
+    const newProduct = await Product.create({
+      title,
+      description,
+      color,
+      price,
+      image: uploadRes.secure_url,
     });
 
-    return NextResponse.json({ message: 'Product saved' });
+    return NextResponse.json({ message: 'Product saved', product: newProduct });
   } catch (error) {
     console.error('Product creation error:', error);
     return NextResponse.json({ error: 'Failed to save product' }, { status: 500 });

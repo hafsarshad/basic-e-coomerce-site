@@ -1,12 +1,15 @@
-export interface Product {
+
+export type Product = {
   _id: string;
   title: string;
   description: string;
-  price: number;
-  color: string;
+  color?: string;
+  price?: number;
+  image?: string;
   createdAt: string;
   updatedAt: string;
-}
+};
+
 
 // Extend Product with quantity and userId for cart items
 export interface CartItem extends Product {

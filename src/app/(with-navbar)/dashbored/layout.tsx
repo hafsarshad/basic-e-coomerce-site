@@ -4,9 +4,9 @@
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen ">
       <nav className="w-64 bg-gray-100 p-4">
-        <ul className="space-y-4">
+        <ul className="space-y-4 mt-16">
         <li>
             <Link href="/home">
               <button className="bg-blue-600 text-white px-4 py-2 rounded w-full">home page</button>
