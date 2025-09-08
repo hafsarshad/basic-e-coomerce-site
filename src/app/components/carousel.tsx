@@ -15,7 +15,7 @@ const images = [
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Convert images into frames of 2 images each
+  // Split into frames of 2 images each
   const frames = [];
   for (let i = 0; i < images.length; i += 2) {
     frames.push(images.slice(i, i + 2));
@@ -30,29 +30,23 @@ const Carousel = () => {
     return () => clearInterval(interval);
   }, [totalFrames]);
 
+  const currentFrame = frames[currentIndex];
+
   return (
     <div className="fixed right-4 top-1/2 transform -translate-y-1/2 w-[600px] h-[600px] overflow-hidden rounded-lg shadow-lg bg-white">
-      <div
-        className="flex transition-transform duration-700 ease-in-out h-full"
-        style={{
-          backgroundColor: `blue`,
-          width: `${frames.length * 100}%`,
-          transform: `translateX(-${(100 / frames.length) * currentIndex}%)`,
-        }}
-      >
-        {frames.map((frame, frameIdx) => (
-          <div key={frameIdx} className="flex w-[600px] h-full">
-            {frame.map((src, idx) => (
-              <div key={idx} className="w-1/2 h-full">
-                <img
-                  src={src}
-                  alt={`Slide ${idx}`}
-                  className="w-full h-72 object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        ))}
+      <div className="relative w-full h-full transition-all duration-900 ease-in-out bg-slate-300">
+        <img
+          src={currentFrame[0]}
+          alt="Image 1"
+          className="absolute top-4 left-4 w-[50%] h-[50%] object-cover rotate-[-10deg] rounded-lg shadow-md"
+        />
+        {currentFrame[1] && (
+          <img
+            src={currentFrame[1]}
+            alt="Image 2"
+            className="absolute bottom-4 right-4 w-[60%] h-[60%] object-cover rotate-[10deg] rounded-lg shadow-md"
+          />
+        )}
       </div>
     </div>
   );
