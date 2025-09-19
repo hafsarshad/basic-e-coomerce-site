@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '../context/CartContext';
 import { Product } from '@/types';
-import Carousel from '../../components/carousel';
+import Header from '../../components/header'
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -41,9 +41,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-6 md:p-20">
 
-<Carousel/>
+    <div className="p-6 md:p-20">
+        <Header/>
+
       <div className="bg-gray-100 text-black font-semibold p-6 text-xl rounded mb-4">
         Tailwind v4 is fully working!
       </div>
