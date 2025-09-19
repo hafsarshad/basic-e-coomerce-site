@@ -44,14 +44,9 @@ export default function HomePage() {
 
     <div className="p-6 md:p-20">
         <Header/>
-
       <div className="bg-gray-100 text-black font-semibold p-6 text-xl rounded mb-4">
         Tailwind v4 is fully working!
       </div>
-
-     
-
-     
     </div> 
   );
 }
