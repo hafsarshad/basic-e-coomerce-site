@@ -10,7 +10,7 @@ module.exports = {
         logoblack :'#2A2828',
         requiredgreen : '#2FAB8C',
         hovergreen : '#36D0AA',
-        lightyellow: '#FEEA81'// add your desired color here
+        lightyellow: '#FFD912'// add your desired color here
       },
       
     },
