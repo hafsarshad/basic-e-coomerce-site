@@ -4,9 +4,13 @@ import { CartProvider } from './context/CartContext';
 
 export default function WithNavbarLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Navbar />
-      <CartProvider>{children}</CartProvider>
+  <>
+      <div className="bg-green-200 ">  
+          <Navbar /> 
+      </div>
+      <CartProvider>
+        <div className=" mx-auto px-5">{children}</div>
+      </CartProvider>
     </>
   );
 }

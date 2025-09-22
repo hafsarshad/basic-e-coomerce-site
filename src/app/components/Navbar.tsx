@@ -47,16 +47,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full h-16 px-4   bg-transparent fixed z-10">
+    <nav className="w-full h-16 bg-slate-400 fixed z-10">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
-        
-        {/* Logo */}
- <div className="bg-slate-200 ">
-  <Logo className="" />
-</div>
-
-
-
+              {/* Logo */}
+        <div className="bg-slate-200 ">
+          <Logo className="" />
+        </div>
         {/* Search Bar */}
     <div className="flex items-center border rounded-2xl border-lightyellow overflow-hidden w-full max-w-md bg-white">
   <input

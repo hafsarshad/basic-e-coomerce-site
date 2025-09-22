@@ -12,6 +12,9 @@ module.exports = {
         hovergreen : '#36D0AA',
         lightyellow: '#FFD912'// add your desired color here
       },
+   fontFamily: {
+        albert: ['"Albert Sans"'],
+      },
       
     },
   },
