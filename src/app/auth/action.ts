@@ -1,3 +1,4 @@
+//src>app>auth>action.ts
 'use server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
