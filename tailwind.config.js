@@ -13,7 +13,7 @@ module.exports = {
         lightyellow: '#FFD912'// add your desired color here
       },
    fontFamily: {
-        albert: ['"Albert Sans"'],
+        albert: ['"Albert Sans"',  'sans-serif'],
       },
       
     },
