@@ -42,15 +42,15 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full h-16 bg-slate-400 fixed z-50 shadow">
-      <div className="max-w-7xl mx-auto h-full px-4 flex items-center justify-between">
+    <nav className="w-full h-16 bg-slate-400 fixed px-4 flex items-center justify-between z-50 shadow">
+      
         {/* Logo */}
         <div className="bg-slate-200">
           <Logo className="" />
         </div>
 
         {/* Search */}
-        <div className="hidden md:flex items-center border rounded-2xl border-yellow-400 overflow-hidden max-w-md w-full bg-white">
+        <div className="hidden md:flex items-center border rounded-2xl border-yellow-400 overflow-hidden max-w-sm w-full bg-white">
           <input
             type="text"
             placeholder="Search..."
@@ -108,7 +108,6 @@ export default function Navbar() {
             </div>
           )}
         </div>
-      </div>
     </nav>
   );
 }
