@@ -6,14 +6,14 @@ import { useRouter } from 'next/navigation';
 import { useCart } from '../context/CartContext';
 import { Product } from '@/types';
 import Header from '../../components/header'
-
+import Categories from '../../components/categories'
 export default function HomePage() {
 
   return (
 
     <div >
         <Header/>
-     
+        <Categories/>
     </div> 
   );
 }

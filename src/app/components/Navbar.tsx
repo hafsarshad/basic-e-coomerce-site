@@ -46,7 +46,8 @@ export default function Navbar() {
       
         {/* Logo */}
         <div className="bg-slate-200">
-          <Logo className="" />
+           <Link href="/home" >   <Logo className="" /></Link>
+        
         </div>
 
         {/* Search */}
