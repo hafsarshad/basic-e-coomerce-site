@@ -8,9 +8,19 @@ import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import Logo from '../../assests/Group 2.svg';
 
 export default function Navbar() {
+  //for scroll animation
+ const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [])
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
-
   const checkAuth = () => {
     const userId = sessionStorage.getItem('userId');
     const email = sessionStorage.getItem('userEmail');
@@ -42,22 +52,26 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full h-16 bg-slate-400 fixed px-4 flex items-center justify-between z-50 shadow">
+    <nav 
+  className={`w-full h-16 fixed px-4 flex items-center justify-between z-50 transition-all duration-300 
+      ${isScrolled
+        ? 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'
+        : 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'}`}>
       
         {/* Logo */}
-        <div className="bg-slate-200">
+        <div className="">
            <Link href="/home" >   <Logo className="" /></Link>
         
         </div>
 
         {/* Search */}
-        <div className="hidden md:flex items-center border rounded-2xl border-yellow-400 overflow-hidden max-w-sm w-full bg-white">
+        <div className="hidden md:flex items-center border rounded-2xl border-yellow-400 overflow-hidden max-w-sm w-full ">
           <input
             type="text"
             placeholder="Search..."
             className="flex-1 px-4 py-1 text-sm text-gray-700 placeholder-gray-400 bg-transparent focus:outline-none"
           />
-          <button className="p-2 hover:bg-gray-200 text-gray-600">
+          <button className="p-2 bg-lightyellow text-gray-600">
             <FaSearch />
           </button>
         </div>
@@ -88,7 +102,7 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="relative group">
-              <button className="text-gray-700 hover:text-blue-600 text-xl flex items-center space-x-2">
+              <button className="text-lightyellow hover:text-blue-600 text-xl flex items-center space-x-2">
                 <FaUser />
               </button>
 

@@ -3,66 +3,78 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './carousel.css';
 
-interface carouselProps {
+interface CssCarouselProps {
   images: string[];
 }
 
-export default function carousel({ images }: carouselProps) {
+export default function CssCarousel({ images }: CssCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false); // ✅ NEW
   const containerRef = useRef<HTMLUListElement>(null);
-  const totalSlides = images.length;
-  const extendedImages = [...images, images[0]]; // Clone first
 
-  // ✅ Ensure first image shows immediately
+  const totalSlides = images.length;
+  const extendedImages = [...images, images[0]]; // clone first
+
+  // ✅ Wait until first client-side render
   useEffect(() => {
-    // Enable transition AFTER first paint
+    setHasMounted(true);
+
+    // Start transition after mount
     const id = setTimeout(() => {
       setTransitionEnabled(true);
-    }, 50); // Small delay allows first image to render
+    }, 50);
 
     return () => clearTimeout(id);
   }, []);
 
-  // ✅ Automatic slide every 3s
+  // ✅ Auto slide every 3s
   useEffect(() => {
+    if (!hasMounted) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [hasMounted]);
 
-  // ✅ Handle when reaching the cloned slide
+  // ✅ Reset from cloned slide to first (0)
   useEffect(() => {
+    if (!hasMounted) return;
+
     const container = containerRef.current;
 
     const handleTransitionEnd = () => {
       if (currentIndex === totalSlides) {
-        setTransitionEnabled(false);
+        setTransitionEnabled(false); // Disable transition before jump
         setCurrentIndex(0);
       }
     };
 
     container?.addEventListener('transitionend', handleTransitionEnd);
-
     return () => {
       container?.removeEventListener('transitionend', handleTransitionEnd);
     };
-  }, [currentIndex, totalSlides]);
+  }, [currentIndex, totalSlides, hasMounted]);
 
-  // ✅ Re-enable transition after reset to index 0
+  // ✅ Re-enable transition after resetting index
   useEffect(() => {
-    if (!transitionEnabled) {
+    if (!transitionEnabled && hasMounted) {
       const id = setTimeout(() => {
         setTransitionEnabled(true);
       }, 50);
       return () => clearTimeout(id);
     }
-  }, [transitionEnabled]);
+  }, [transitionEnabled, hasMounted]);
+
+  if (!hasMounted) {
+    // ⛔ Don’t render anything until client-side mount
+    return null;
+  }
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mt-4">
       <div className="carousel-wrapper relative w-full max-w-3xl overflow-hidden rounded-xl">
         <div className="carousel w-full overflow-hidden relative">
           <ul
@@ -88,6 +100,7 @@ export default function carousel({ images }: carouselProps) {
     </div>
   );
 }
+
 
 
 

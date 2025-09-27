@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   //const showNavbar = !hideNavbarRoutes.includes(pathname);
   return (
     <html lang="en" >
-      <body className="font-albert ">
+      <body className="font-albert bg-gray-100 ">
      
     
           {children}
