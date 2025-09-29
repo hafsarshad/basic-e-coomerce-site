@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext';
 import { Product } from '@/types';
 import Header from '../../components/header'
 import Categories from '../../components/categories'
+import AboutUs from '../../components/AboutUs'
 export default function HomePage() {
 
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
     <div  >
         <Header/>
         <Categories/>
+        <AboutUs/>
     </div> 
   );
 }

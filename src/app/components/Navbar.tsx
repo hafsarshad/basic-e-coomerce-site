@@ -53,7 +53,7 @@ export default function Navbar() {
 
   return (
     <nav 
-  className={`w-full h-16 fixed px-4 flex items-center justify-between z-50 transition-all duration-300 
+  className={`w-full h-12 fixed px-4 flex items-center justify-between z-50 transition-all duration-300 
       ${isScrolled
         ? 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'
         : 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'}`}>
@@ -69,7 +69,7 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="Search..."
-            className="flex-1 px-4 py-1 text-sm text-gray-700 placeholder-gray-400 bg-transparent focus:outline-none"
+            className="flex-1 px-4  text-sm text-gray-700 placeholder-gray-400 bg-transparent focus:outline-none"
           />
           <button className="p-2 bg-lightyellow text-gray-600">
             <FaSearch />
@@ -77,7 +77,7 @@ export default function Navbar() {
         </div>
 
         {/* Links */}
-        <div className="hidden lg:flex space-x-6 text-sm text-gray-800 font-medium">
+        <div className="hidden lg:flex space-x-6 bg-pink-100 text-sm text-gray-800 font-medium">
           <Link href="/categories" className="hover:text-blue-600">Categories</Link>
           <Link href="/products" className="hover:text-blue-600">All Products</Link>
           <Link href="/help" className="hover:text-blue-600">Help</Link>

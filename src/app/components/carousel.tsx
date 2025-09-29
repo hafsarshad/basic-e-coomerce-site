@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import './carousel.css';
 
 interface CssCarouselProps {
@@ -87,10 +88,12 @@ export default function CssCarousel({ images }: CssCarouselProps) {
           >
             {extendedImages.map((src, index) => (
               <li key={index} className="min-w-full h-full">
-                <img
+                <Image
                   src={src}
                   alt={`Slide ${index + 1}`}
-                  className="w-full h-full object-contain"
+                  fill
+                  className="object-contain"
+                  priority={index === 0} // First image is prioritized
                 />
               </li>
             ))}

@@ -5,7 +5,7 @@ import Carousel from '../components/carousel';
 export default function header(){
   const carousel1Images = [
   '/images/airpodswhite.png',
-  '/images/laptop.png',
+'/images/laptop.png',
    '/images/smartwatch.png',
   //  '/images/bluetoothspeaker.png',
   //  '/images/gamingconsole.png',
