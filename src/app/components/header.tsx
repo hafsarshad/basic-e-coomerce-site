@@ -28,8 +28,8 @@ const carousel3Images = [
 ];
 
     return(
-  <div className='  flex  pt-16'>
-    <div className=" max-w-screen-md">
+  <div className='flex  pt-16'>
+    <div className=" max-w-screen-md bg-slate-200">
       <h1 className="mt-3 text-logoblack font-albert text-7xl font-medium">Power Up Your World With The Latest Electronics!</h1>
       <h1 className="w-4/5 mt-3 text-logoblack font-albert text-3xl font-normal">our one-stop shop for the latest electronics at unbeatable prices.</h1>
     </div>

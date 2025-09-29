@@ -5,19 +5,9 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
-import Logo from '../../assests/Group 2.svg';
+import Logo from '../../assests/Group2.png';
 
 export default function Navbar() {
-  //for scroll animation
- const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [])
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -52,41 +42,44 @@ export default function Navbar() {
   };
 
   return (
-    <nav 
-  className={`w-full h-12 fixed px-4 flex items-center justify-between z-50 transition-all duration-300 
-      ${isScrolled
-        ? 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'
-        : 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'}`}>
-      
-        {/* Logo */}
-        <div className="">
-           <Link href="/home" >   <Logo className="" /></Link>
-        
-        </div>
+    <nav  className= 'w-full h-12 fixed px-4 py-6 flex items-center justify-between z-50 transition-all duration-300 bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'>
+  {/* Left side: Logo + Links + Search */}
+   {/* Logo */}
+   
+    <div className='flex items-center  justify-between w-[65%] '>
+       <Link href="/home" className="mb-2">
+        <Image src={Logo} alt="Logo" className="" />
+      </Link>
+    {/* Links */}
+    {/* <div className="hidden lg:flex items-center space-x-6  text-md text-gray-800 font-medium"> */}
+      <Link href="/categories" className="hover:text-blue-600 -mb-2">
+        Categories
+      </Link>
+      <Link href="/products" className="hover:text-blue-600 -mb-2">
+        All Products
+      </Link>
+      <Link href="/help" className="hover:text-blue-600 -mb-2">
+        Help
+      </Link>
+    {/* </div> */}
 
-        {/* Search */}
-        <div className="hidden md:flex items-center border rounded-2xl border-yellow-400 overflow-hidden max-w-sm w-full ">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="flex-1 px-4  text-sm text-gray-700 placeholder-gray-400 bg-transparent focus:outline-none"
-          />
-          <button className="p-2 bg-lightyellow text-gray-600">
-            <FaSearch />
-          </button>
-        </div>
-
-        {/* Links */}
-        <div className="hidden lg:flex space-x-6 bg-pink-100 text-sm text-gray-800 font-medium">
-          <Link href="/categories" className="hover:text-blue-600">Categories</Link>
-          <Link href="/products" className="hover:text-blue-600">All Products</Link>
-          <Link href="/help" className="hover:text-blue-600">Help</Link>
-        </div>
+    {/* Search */}
+    <div className="hidden  md:flex items-center h-7 border rounded-2xl border-yellow-400 overflow-hidden max-w-sm w-full">
+      <input
+        type="text"
+        placeholder="Search..."
+        className="flex-1 px-3 h-full text-sm text-gray-700 placeholder-gray-400 bg-transparent focus:outline-none"
+      />
+      <button className="h-full px-3 bg-lightyellow text-gray-600 flex items-center justify-center">
+        <FaSearch className="text-sm" />
+      </button>
+    </div>
+</div>
 
         {/* Right Side */}
         <div className="flex items-center space-x-4">
           {/* Cart */}
-          <Link href="/cart" className="text-gray-700 hover:text-blue-600 text-xl">
+          <Link href="/cart" className="text-gray-700 -mb-3 hover:text-blue-600 text-xl">
             <FaShoppingCart />
           </Link>
 
@@ -95,7 +88,7 @@ export default function Navbar() {
               {/* ✅ Updated: Single Auth Page */}
               <Link
                 href="/auth"
-                className="bg-blue-500 text-white text-sm py-1.5 px-4 rounded hover:bg-blue-600"
+                className="bg-blue-500 h-7 text-white text-sm py-1 px-4 rounded-2xl hover:bg-blue-600"
               >
                 Login / Signup
               </Link>

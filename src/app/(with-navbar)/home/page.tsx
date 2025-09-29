@@ -12,7 +12,7 @@ export default function HomePage() {
 
   return (
 
-    <div  >
+    <div  className='w-[98%] mx-auto'>
         <Header/>
         <Categories/>
         <AboutUs/>

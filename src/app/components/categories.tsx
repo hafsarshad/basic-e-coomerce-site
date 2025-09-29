@@ -26,7 +26,7 @@ const categories = [
 const CategoriesSection = () => {
   return (
     <section className="py-10 bg-gray-100">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Shop by Category
         </h2>
