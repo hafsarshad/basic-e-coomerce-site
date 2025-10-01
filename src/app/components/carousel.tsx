@@ -1,99 +1,40 @@
+
+
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 import './carousel.css';
 
-interface CssCarouselProps {
+interface carouselProps {
   images: string[];
 }
 
-export default function CssCarousel({ images }: CssCarouselProps) {
+export default function carousel({ images }: carouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [transitionEnabled, setTransitionEnabled] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false); // ✅ NEW
-  const containerRef = useRef<HTMLUListElement>(null);
+  const total = images.length;
 
-  const totalSlides = images.length;
-  const extendedImages = [...images, images[0]]; // clone first
-
-  // ✅ Wait until first client-side render
   useEffect(() => {
-    setHasMounted(true);
-
-    // Start transition after mount
-    const id = setTimeout(() => {
-      setTransitionEnabled(true);
-    }, 50);
-
-    return () => clearTimeout(id);
-  }, []);
-
-  // ✅ Auto slide every 3s
-  useEffect(() => {
-    if (!hasMounted) return;
-
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
+      setCurrentIndex((prev) => (prev + 1) % total);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [hasMounted]);
-
-  // ✅ Reset from cloned slide to first (0)
-  useEffect(() => {
-    if (!hasMounted) return;
-
-    const container = containerRef.current;
-
-    const handleTransitionEnd = () => {
-      if (currentIndex === totalSlides) {
-        setTransitionEnabled(false); // Disable transition before jump
-        setCurrentIndex(0);
-      }
-    };
-
-    container?.addEventListener('transitionend', handleTransitionEnd);
-    return () => {
-      container?.removeEventListener('transitionend', handleTransitionEnd);
-    };
-  }, [currentIndex, totalSlides, hasMounted]);
-
-  // ✅ Re-enable transition after resetting index
-  useEffect(() => {
-    if (!transitionEnabled && hasMounted) {
-      const id = setTimeout(() => {
-        setTransitionEnabled(true);
-      }, 50);
-      return () => clearTimeout(id);
-    }
-  }, [transitionEnabled, hasMounted]);
-
-  if (!hasMounted) {
-    // ⛔ Don’t render anything until client-side mount
-    return null;
-  }
+  }, [total]);
 
   return (
-    <div className="flex flex-col items-center justify-center mt-4">
+    <div className="flex flex-col items-center justify-center">
       <div className="carousel-wrapper relative w-full max-w-3xl overflow-hidden rounded-xl">
         <div className="carousel w-full overflow-hidden relative">
           <ul
-            ref={containerRef}
-            className="flex"
-            style={{
-              transition: transitionEnabled ? 'transform 0.7s ease-in-out' : 'none',
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {extendedImages.map((src, index) => (
+            {images.map((src, index) => (
               <li key={index} className="min-w-full h-full">
-                <Image
+                <img
                   src={src}
                   alt={`Slide ${index + 1}`}
-                  fill
-                  className="object-contain"
-                  priority={index === 0} // First image is prioritized
+                  className="w-full h-full object-contain"
                 />
               </li>
             ))}
@@ -103,55 +44,6 @@ export default function CssCarousel({ images }: CssCarouselProps) {
     </div>
   );
 }
-
-
-
-
-
-// 'use client';
-
-// import React, { useEffect, useState } from 'react';
-// import './carousel.css';
-
-// interface carouselProps {
-//   images: string[];
-// }
-
-// export default function carousel({ images }: carouselProps) {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const total = images.length;
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentIndex((prev) => (prev + 1) % total);
-//     }, 3000);
-
-//     return () => clearInterval(interval);
-//   }, [total]);
-
-//   return (
-//     <div className="flex flex-col items-center justify-center">
-//       <div className="carousel-wrapper relative w-full max-w-3xl overflow-hidden rounded-xl">
-//         <div className="carousel w-full overflow-hidden relative">
-//           <ul
-//             className="flex transition-transform duration-700 ease-in-out"
-//             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-//           >
-//             {images.map((src, index) => (
-//               <li key={index} className="min-w-full h-full">
-//                 <img
-//                   src={src}
-//                   alt={`Slide ${index + 1}`}
-//                   className="w-full h-full object-contain"
-//                 />
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 
 
 

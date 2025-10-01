@@ -1,15 +1,15 @@
 .carousel-wrapper {
   position: relative;
-  width: auto;
-  max-width: 300px;
+  width: 100%;
+  max-width: 600px; /* control size here */
 }
 
 .carousel {
   overflow: hidden;
-  width: 250px;
+  width: 100%;
   border-radius: 1rem;
- 
 }
+
 
 .carousel ul {
   display: flex;
