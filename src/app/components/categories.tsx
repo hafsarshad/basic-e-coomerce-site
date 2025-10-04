@@ -6,19 +6,19 @@ import Image from 'next/image';
 const categories = [
   {
     name: 'Mobile & Computing Devices',
-    image: '/images/laptop.png',
+   // image: '/images/laptop.png',
   },
   {
     name: 'Personal Care',
-    image:  '/images/curler.png',
+  //  image:  '/images/curler.png',
   },
   {
     name: 'Home Appliance',
-    image: '/images/home.png',
+    //image: '/images/home.png',
   },
    {
     name: 'Kitchen Appliance ',
-    image:  '/images/curler.png',
+  //  image:  '/images/curler.png',
   },
 
 ];
@@ -38,13 +38,13 @@ const CategoriesSection = () => {
               className="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300 cursor-pointer group"
             >
               <div className="relative w-full h-48">
-                <Image
+                {/* <Image
                   src={category.image}
                   alt={category.name}
                   layout="fill"
                   objectFit="cover"
                   className="group-hover:scale-105 transition-transform duration-300"
-                />
+                /> */}
               </div>
               <div className="p-4 text-center">
                 <h3 className="text-lg font-semibold text-gray-800 group-hover:text-blue-600">
