@@ -5,8 +5,8 @@ import Carousel from '../components/carousel';
 export default function header(){
   const carousel1Images = [
    '/images/personalcare.png',
-   '/images/mobile.png',
-  '/images/homeandkitchen.png'
+   '/images/mobile.svg',
+  '/images/homeandkitchen.svg'
 ];
 
 
