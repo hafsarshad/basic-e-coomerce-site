@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Carousel from '../components/carousel';
+import Pulse from '../components/pulseanimation'
 export default function header(){
   const carousel1Images = [
    '/images/personalcare.png',
@@ -11,6 +12,7 @@ export default function header(){
 
 
     return(
+     <>
   <div className='flex  pt-16 h-[500px] bg-slate-300 '>
     <div className=" max-w-[50%] mt-5">
       <h1 className="mt-3 text-logoblack font-albert text-7xl font-medium">Power Up Your World With The Latest Electronics!</h1>
@@ -21,10 +23,10 @@ export default function header(){
         </div>
     </div>
       <div className="w-[60%] mx-auto mt-14">
-        {/* First Row */} 
           <Carousel images={carousel1Images} />
-      </div>
-</div>
-
+      </div>   
+   </div>
+  
+</>
     )
 }
