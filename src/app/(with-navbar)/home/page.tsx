@@ -13,7 +13,7 @@ export default function HomePage() {
 
   return (
 
-    <div  className='w-[98%] mx-auto'>
+    <div  className='w-[99%] mx-auto'>
         <Header/>
         <Categories/>
         <AboutUs/>

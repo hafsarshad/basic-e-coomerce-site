@@ -17,14 +17,14 @@ export default function carousel({ images }: carouselProps) {
   }, [total]);
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="carousel-wrapper relative w-full max-w-3xl overflow-hidden rounded-xl">
+      <div className="carousel-wrapper relative w-full h-svh overflow-hidden rounded-xl">
         <div className="carousel w-full overflow-hidden relative">
           <ul
-            className="flex transition-transform duration-700 ease-in-out bg-slate-300"
+            className="flex transition-transform duration-700 ease-in-out "
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((src, index) => (
-              <li key={index} className="min-w-full h-full">
+              <li key={index} className=" h-full ">
                 <img
                   src={src}
                   alt={`Slide ${index + 1}`}
