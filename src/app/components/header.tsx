@@ -7,7 +7,7 @@ export default function header(){
   const carousel1Images = [
    '/images/personalcare1.svg',
    '/images/mobole.svg',
- // '/images/homeandkitchen.png'
+   '/images/homeandkitchen.svg'
 ];
 
 
