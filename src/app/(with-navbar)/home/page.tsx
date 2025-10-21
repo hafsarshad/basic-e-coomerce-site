@@ -8,6 +8,8 @@ import { Product } from '@/types';
 import Header from '../../components/header'
 import Categories from '../../components/categories'
 import AboutUs from '../../components/AboutUs'
+import WhyChooseUs from '../../components/WhyChooseUs'
+import SpecialOffers from '../../components/SpecialOffers'
 
 export default function HomePage() {
 
@@ -16,6 +18,8 @@ export default function HomePage() {
     <div  className='w-[99%] mx-auto'>
         <Header/>
         <Categories/>
+        <WhyChooseUs/>
+        <SpecialOffers/>
         <AboutUs/>
 
     </div> 
