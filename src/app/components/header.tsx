@@ -5,7 +5,7 @@ import Carousel from '../components/carousel';
 import Pulse from '../components/pulseanimation'
 export default function header(){
   const carousel1Images = [
-   '/images/personalcare1.svg',
+   '/images/personalcare.svg',
    '/images/mobole.svg',
    '/images/homeandkitchen.svg'
 ];

@@ -9,7 +9,8 @@ import Header from '../../components/header'
 import Categories from '../../components/categories'
 import AboutUs from '../../components/AboutUs'
 import WhyChooseUs from '../../components/WhyChooseUs'
-import SpecialOffers from '../../components/SpecialOffers'
+// import SpecialOffers from '../../components/SpecialOffers'
+
 
 export default function HomePage() {
 
@@ -19,9 +20,9 @@ export default function HomePage() {
         <Header/>
         <Categories/>
         <WhyChooseUs/>
-        <SpecialOffers/>
+        {/* <SpecialOffers/> */}
         <AboutUs/>
-
+        {/* <Footer/> */}
     </div> 
   );
 }

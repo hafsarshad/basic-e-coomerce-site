@@ -2,7 +2,7 @@
 import Navbar from '../components/Navbar';
 import { CartProvider } from './context/CartContext';
 
-
+import Footer from '../components/Footer'
 export default function WithNavbarLayout({ children }: { children: React.ReactNode }) {
   return (
   <>
@@ -11,7 +11,7 @@ export default function WithNavbarLayout({ children }: { children: React.ReactNo
       </div>
       <CartProvider>
         <div className=" mx-auto px-5">{children}</div>
-      </CartProvider>
+      </CartProvider>       <Footer/>
     </>
   );
 }

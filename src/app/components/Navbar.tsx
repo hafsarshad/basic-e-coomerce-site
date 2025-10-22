@@ -40,9 +40,10 @@ export default function Navbar() {
     sessionStorage.clear();
     checkAuth();
   };
+    // <nav  className= 'w-full h-12 fixed px-4 py-6 flex items-center justify-between z-50 transition-all duration-300 bg-white/10 backdrop-blur-sm border-b border-white/20 shadow-md'>
 
   return (
-    <nav  className= 'w-full h-12 fixed px-4 py-6 flex items-center justify-between z-50 transition-all duration-300 bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md'>
+    <nav  className= 'w-full h-12 fixed px-4 py-6 flex items-center justify-between z-50 transition-all duration-300 bg-white/10 backdrop-blur-sm border-b border-white/20 shadow-md' >
   {/* Left side: Logo + Links + Search */}
    {/* Logo */}
    
@@ -88,7 +89,7 @@ export default function Navbar() {
               {/* ✅ Updated: Single Auth Page */}
               <Link
                 href="/auth"
-                className="bg-blue-500 h-7 text-white text-sm py-1 px-4 rounded-2xl hover:bg-blue-600"
+                className="bg-lightyellow h-7  text-sm py-1 px-4 rounded-2xl hover:bg-blue-600"
               >
                 Login / Signup
               </Link>
